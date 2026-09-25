@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecturas del Día ✝️</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+      radial-gradient(1px 1px at 90px 70px, #ffd700, transparent),
+      radial-gradient(1.5px 1.5px at 150px 120px, #fff, transparent),
+      radial-gradient(1px 1px at 250px 50px, #fff, transparent),
+      radial-gradient(2px 2px at 350px 200px, #ffd700, transparent);
+    background-size: 400px 400px;
+    opacity: 0.4;
+    animation: twinkle 6s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+
+  header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 50px 20px 30px;
+  }
+
+  .cruz {
+    font-size: 3rem;
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    to { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.6); }
+  }
+
+  .titulo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #ffd700;
+    margin: 10px 0;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  }
+
+  .fecha {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  .linea-decorativa {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ffd700, transparent);
+    margin: 20px auto;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .lectura {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 20px;
+    padding: 30px 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .lectura.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .lectura:hover {
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
+    transform: translateY(-5px);
+  }
+
+  .lectura-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: #ffd700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+  }
+
+  .lectura-titulo .icono {
+    font-size: 1.5rem;
+  }
+
+  .lectura-referencia {
+    font-size: 0.95rem;
+    color: #a0d8ff;
+    font-style: italic;
+    margin-bottom: 18px;
+    border-left: 3px solid #ffd700;
+    padding-left: 12px;
+  }
+
+  .lectura-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #f0f0f0;
+    text-align: justify;
+  }
+
+  .lectura-texto p {
+    margin-bottom: 14px;
+  }
+
+  .salmo-estrofa {
+    margin-bottom: 18px;
+    padding-left: 15px;
+    border-left: 2px solid rgba(255, 215, 0, 0.4);
+  }
+
+  .salmo-respuesta {
+    font-weight: 700;
+    color: #ffd700;
+    font-style: italic;
+    font-size: 1.25rem;
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 215, 0, 0.08);
+    border-radius: 10px;
+  }
+
+  .evangelio {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 215, 0, 0.35);
+  }
+
+  .compartir {
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .btn-compartir {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #1a1a2e;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .btn-compartir:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  footer .corazon {
+    color: #ffd700;
+  }
+
+  @media (max-width: 600px) {
+    .titulo { font-size: 2.5rem; }
+    .cruz { font-size: 2.3rem; }
+    .lectura { padding: 22px 18px; }
+    .lectura-titulo { font-size: 1.5rem; }
+    .lectura-texto { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="cruz">✝</div>
+  <h1 class="titulo">Lecturas del Día</h1>
+  <div class="linea-decorativa"></div>
+  <p class="fecha">Sábado, 26 de Septiembre de 2026</p>
+</header>
+
+<div class="container">
+
+  <!-- PRIMERA LECTURA -->
+  <section class="lectura" id="lectura1">
+    <h2 class="lectura-titulo"><span class="icono">📖</span> Primera Lectura</h2>
+    <p class="lectura-referencia">Eclesiastés 11, 9 — 12, 8</p>
+    <div class="lectura-texto">
+      <p>Alégrate, muchacho, mientras eres joven, y que tu corazón sea feliz en tus años juveniles. Sigue los impulsos de tu corazón y lo que es un incentivo para tus ojos; pero ten presente que por todo eso Dios te llamará a juicio. Aparta de tu corazón la tristeza y aleja de tu carne el dolor, porque la juventud y la aurora de la vida pasan fugazmente.</p>
+      <p>Acuérdate de tu Creador en los días de tu juventud, antes que lleguen los días penosos y vengan los años en los que dirás: "No encuentro en ellos ningún placer"; antes que se oscurezcan el sol y la luz, la luna y las estrellas, y vuelvan las nubes cargadas de lluvia.</p>
+      <p>En aquel día temblarán los guardianes de la casa y se encorvarán los hombres vigorosos; se detendrán las moledoras, que ya serán pocas, y se oscurecerán las que miran por las ventanas; se cerrarán las puertas de la calle, mientras declina el ruido del molino; cesará el canto de los pájaros y enmudecerán las que entonan canciones.</p>
+      <p>Entonces se temerán las cuestas empinadas y los terrores acecharán por el camino. El almendro estará florecido, se pondrá pesada la langosta y la alcaparra perderá su eficacia. Porque el hombre se va a su morada eterna, mientras las plañideras rondan por la calle.</p>
+      <p>Sí, acuérdate de Él antes que se corte la hebra de plata y se quiebre la ampolla de oro, antes que se haga pedazos el cántaro en la fuente y se rompa la cuerda del aljibe; antes que el polvo vuelva a la tierra, como lo que es, y el aliento vuelva a Dios, porque es Él quien lo dio. ¡Vanidad, pura vanidad!, dice Cohélet. ¡Nada más que vanidad!</p>
+      <p><strong>Palabra de Dios.</strong></p>
+    </div>
+  </section>
+
+  <!-- SALMO -->
+  <section class="lectura" id="salmo">
+    <h2 class="lectura-titulo"><span class="icono">🎵</span> Salmo Responsorial</h2>
+    <p class="lectura-referencia">Salmo 89, 3-6. 12-14. 17</p>
+    <div class="lectura-texto">
+      <span class="salmo-respuesta">R. ¡Tú has sido nuestro refugio, Señor!</span>
+      
+      <div class="salmo-estrofa">
+        <p>Tú haces que los hombres vuelvan al polvo, con sólo decirles: "Vuelvan, seres humanos". Porque mil años son ante tus ojos como el día de ayer, que ya pasó, como una vigilia de la noche. <strong>R.</strong></p>
+      </div>
+      
+      <div class="salmo-estrofa">
+        <p>Tú los arrebatas, y son como un sueño, como la hierba que brota de mañana: por la mañana brota y florece, y por la tarde se seca y se marchita. <strong>R.</strong></p>
+      </div>
+      
+      <div class="salmo-estrofa">
+        <p>Enséñanos a calcular nuestros años, para que nuestro corazón alcance la sabiduría. ¡Vuélvete, Señor! ¿Hasta cuándo...? Ten compasión de tus servidores. <strong>R.</strong></p>
+      </div>
+      
+      <div class="salmo-estrofa">
+        <p>Sácianos enseguida con tu amor, y cantaremos felices toda nuestra vida. Que descienda hasta nosotros la bondad del Señor; que el Señor, nuestro Dios, haga prosperar la obra de nuestras manos. <strong>R.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVANGELIO -->
+  <section class="lectura evangelio" id="evangelio">
+    <h2 class="lectura-titulo"><span class="icono">✨</span> Evangelio</h2>
+    <p class="lectura-referencia">Lucas 9, 43b-45</p>
+    <div class="lectura-texto">
+      <p>Mientras todos se admiraban por las cosas que hacía, Jesús dijo a sus discípulos: "Escuchen bien esto que les digo: El Hijo del hombre va a ser entregado en manos de los hombres".</p>
+      <p>Pero ellos no entendían estas palabras: su sentido les resultaba oscuro, de manera que no podían comprenderlas, y temían interrogar a Jesús acerca de esto.</p>
+      <p><strong>Palabra del Señor.</strong></p>
+    </div>
+  </section>
+
+  <div class="compartir">
+    <button class="btn-compartir" onclick="compartir()">🙏 Compartir la Palabra</button>
+  </div>
+
+</div>
+
+<footer>
+  Hecho con <span class="corazon">♥</span> para la gloria de Dios
+</footer>
+
+<script>
+  // Animar las tarjetas al cargar
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.lectura').forEach(el => el.classList.add('visible'));
+    }, 200);
+  });
+
+  // Compartir
+  function compartir() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Lecturas del Día ✝️',
+        text: 'Comparte la Palabra de Dios 🙏',
+        url: window.location.href
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('¡Enlace copiado! Compártelo con tus hermanos 🙏');
+    }
+  }
+</script>
+
+</body>
+</html>
