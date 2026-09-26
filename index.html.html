@@ -1,317 +1,259 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lecturas del Día ✝️</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastoral Familiar - Acuérdate de tu Creador</title>
+    <style>
+        /* --- Estilos Generales con Fondo de Biblia --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Fondo de la imagen de la Biblia */
+            background-image: url('https://st4.depositphotos.com/37487006/38584/i/600/depositphotos_385845172-stock-photo-open-bible-black-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #ffffff; /* Texto blanco para contrastar con el fondo oscuro */
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+        }
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    min-height: 100vh;
-    color: #fff;
-    overflow-x: hidden;
-    position: relative;
-  }
+        /* Capa oscura semitransparente sobre la imagen para mejorar la legibilidad */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Oscurece la imagen un 60% */
+            z-index: 0;
+        }
 
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image:
-      radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-      radial-gradient(1px 1px at 90px 70px, #ffd700, transparent),
-      radial-gradient(1.5px 1.5px at 150px 120px, #fff, transparent),
-      radial-gradient(1px 1px at 250px 50px, #fff, transparent),
-      radial-gradient(2px 2px at 350px 200px, #ffd700, transparent);
-    background-size: 400px 400px;
-    opacity: 0.4;
-    animation: twinkle 6s ease-in-out infinite;
-    z-index: 0;
-  }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(20, 20, 20, 0.85); /* Fondo oscuro semitransparente para el contenido */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border-top: 8px solid #d4a373; /* Borde dorado */
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(3px);
+        }
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
+        /* --- Estilo del Logo --- */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-  header {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 50px 20px 30px;
-  }
+        .logo-container img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 6px 15px rgba(212, 163, 115, 0.5);
+            border: 3px solid #d4a373;
+            transition: transform 0.3s ease;
+        }
 
-  .cruz {
-    font-size: 3rem;
-    color: #ffd700;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-    animation: glow 2s ease-in-out infinite alternate;
-  }
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
 
-  @keyframes glow {
-    from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
-    to { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.6); }
-  }
+        /* --- Encabezado --- */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px dashed #d4a373;
+            padding-bottom: 20px;
+        }
 
-  .titulo {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem;
-    color: #ffd700;
-    margin: 10px 0;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-  }
+        h1 {
+            color: #f5e6d3; /* Crema claro */
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
 
-  .fecha {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    color: #e0e0e0;
-    font-style: italic;
-    letter-spacing: 1px;
-  }
+        .subtitle {
+            color: #d4a373; /* Dorado */
+            font-style: italic;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
 
-  .linea-decorativa {
-    width: 120px;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #ffd700, transparent);
-    margin: 20px auto;
-  }
+        /* --- Estructura de Columnas --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
 
-  .container {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+        /* --- Estilos de las Secciones --- */
+        .section-title {
+            color: #d4a373; /* Dorado */
+            font-size: 1.4em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #d4a373;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
 
-  .lectura {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    border-radius: 20px;
-    padding: 30px 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s ease;
-    opacity: 0;
-    transform: translateY(30px);
-  }
+        .reading-text {
+            font-size: 1.05em;
+            text-align: justify;
+            color: #e0e0e0; /* Gris muy claro */
+            margin-bottom: 20px;
+        }
 
-  .lectura.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+        .reference {
+            display: block;
+            font-weight: bold;
+            color: #d4a373;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
 
-  .lectura:hover {
-    border-color: rgba(255, 215, 0, 0.6);
-    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
-    transform: translateY(-5px);
-  }
+        /* --- Salmo (Estilo especial) --- */
+        .psalm-response {
+            font-weight: bold;
+            color: #f5e6d3;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+            background-color: rgba(212, 163, 115, 0.2); /* Fondo dorado tenue */
+            padding: 5px 10px;
+            border-radius: 5px;
+            border-left: 4px solid #d4a373;
+        }
 
-  .lectura-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    color: #ffd700;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-  }
+        .psalm-verse {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid #d4a373;
+            color: #e0e0e0;
+        }
 
-  .lectura-titulo .icono {
-    font-size: 1.5rem;
-  }
+        /* --- Evangelio --- */
+        .gospel-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            background-color: rgba(255, 255, 255, 0.08); /* Fondo sutil */
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 163, 115, 0.4);
+            color: #f0f0f0;
+        }
 
-  .lectura-referencia {
-    font-size: 0.95rem;
-    color: #a0d8ff;
-    font-style: italic;
-    margin-bottom: 18px;
-    border-left: 3px solid #ffd700;
-    padding-left: 12px;
-  }
-
-  .lectura-texto {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #f0f0f0;
-    text-align: justify;
-  }
-
-  .lectura-texto p {
-    margin-bottom: 14px;
-  }
-
-  .salmo-estrofa {
-    margin-bottom: 18px;
-    padding-left: 15px;
-    border-left: 2px solid rgba(255, 215, 0, 0.4);
-  }
-
-  .salmo-respuesta {
-    font-weight: 700;
-    color: #ffd700;
-    font-style: italic;
-    font-size: 1.25rem;
-    display: block;
-    margin-bottom: 20px;
-    text-align: center;
-    padding: 10px;
-    background: rgba(255, 215, 0, 0.08);
-    border-radius: 10px;
-  }
-
-  .evangelio {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 255, 255, 0.03));
-    border: 1px solid rgba(255, 215, 0, 0.35);
-  }
-
-  .compartir {
-    text-align: center;
-    margin: 40px 0;
-  }
-
-  .btn-compartir {
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    color: #1a1a2e;
-    border: none;
-    padding: 15px 35px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .btn-compartir:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
-  }
-
-  footer {
-    text-align: center;
-    padding: 30px 20px;
-    color: #a0a0a0;
-    font-size: 0.9rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  footer .corazon {
-    color: #ffd700;
-  }
-
-  @media (max-width: 600px) {
-    .titulo { font-size: 2.5rem; }
-    .cruz { font-size: 2.3rem; }
-    .lectura { padding: 22px 18px; }
-    .lectura-titulo { font-size: 1.5rem; }
-    .lectura-texto { font-size: 1.1rem; }
-  }
-</style>
+        /* --- Responsive (Para celulares) --- */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="cruz">✝</div>
-  <h1 class="titulo">Lecturas del Día</h1>
-  <div class="linea-decorativa"></div>
-  <p class="fecha">Sábado, 26 de Septiembre de 2026</p>
-</header>
+    <div class="container">
+        
+        <!-- LOGO DE LA PASTORAL FAMILIAR -->
+        <div class="logo-container">
+            <img src="https://i.imgur.com/b4BdXzJ.jpeg" alt="Logo Pastoral Familiar">
+        </div>
 
-<div class="container">
+        <header>
+            <h1>Acuérdate de tu Creador</h1>
+            <p class="subtitle">Pastoral Familiar - Sábado 26 de Septiembre</p>
+        </header>
 
-  <!-- PRIMERA LECTURA -->
-  <section class="lectura" id="lectura1">
-    <h2 class="lectura-titulo"><span class="icono">📖</span> Primera Lectura</h2>
-    <p class="lectura-referencia">Eclesiastés 11, 9 — 12, 8</p>
-    <div class="lectura-texto">
-      <p>Alégrate, muchacho, mientras eres joven, y que tu corazón sea feliz en tus años juveniles. Sigue los impulsos de tu corazón y lo que es un incentivo para tus ojos; pero ten presente que por todo eso Dios te llamará a juicio. Aparta de tu corazón la tristeza y aleja de tu carne el dolor, porque la juventud y la aurora de la vida pasan fugazmente.</p>
-      <p>Acuérdate de tu Creador en los días de tu juventud, antes que lleguen los días penosos y vengan los años en los que dirás: "No encuentro en ellos ningún placer"; antes que se oscurezcan el sol y la luz, la luna y las estrellas, y vuelvan las nubes cargadas de lluvia.</p>
-      <p>En aquel día temblarán los guardianes de la casa y se encorvarán los hombres vigorosos; se detendrán las moledoras, que ya serán pocas, y se oscurecerán las que miran por las ventanas; se cerrarán las puertas de la calle, mientras declina el ruido del molino; cesará el canto de los pájaros y enmudecerán las que entonan canciones.</p>
-      <p>Entonces se temerán las cuestas empinadas y los terrores acecharán por el camino. El almendro estará florecido, se pondrá pesada la langosta y la alcaparra perderá su eficacia. Porque el hombre se va a su morada eterna, mientras las plañideras rondan por la calle.</p>
-      <p>Sí, acuérdate de Él antes que se corte la hebra de plata y se quiebre la ampolla de oro, antes que se haga pedazos el cántaro en la fuente y se rompa la cuerda del aljibe; antes que el polvo vuelva a la tierra, como lo que es, y el aliento vuelva a Dios, porque es Él quien lo dio. ¡Vanidad, pura vanidad!, dice Cohélet. ¡Nada más que vanidad!</p>
-      <p><strong>Palabra de Dios.</strong></p>
+        <div class="content-grid">
+            
+            <!-- COLUMNA IZQUIERDA: PRIMERA LECTURA Y SALMO -->
+            <div class="column-left">
+                
+                <!-- Primera Lectura -->
+                <div class="section">
+                    <h2 class="section-title">Primera Lectura</h2>
+                    <span class="reference">Lectura del libro del Eclesiastés (Cohélet) (11, 9 - 12, 8)</span>
+                    <div class="reading-text">
+                        <p>Alégrate, joven, durante tu juventud, disfruta de corazón tus años jóvenes. Sigue el camino que te indique el corazón y lo que deleita a tus ojos. Pero no olvides que de todo ello Dios te pedirá cuentas. Aleja de tu corazón la tristeza y de tu cuerpo el sufrimiento; pero recuerda que los placeres de la juventud son cosas que se acaban.</p>
+                        <p>Acuérdate de tu Creador en tus años jóvenes, antes de que vengan los días amargos y se echen encima los años en que dirás: "No hallo gusto en nada". Antes de que se nuble la luz del sol, la luna y las estrellas, y retornen las nubes tras la lluvia.</p>
+                        <p>Cuando tiemblen los guardias de la casa y se dobleguen los valientes. Cuando las que muelen sean pocas y dejen de trabajar y las que miran por las ventanas se queden ciegas. Cuando las puertas de la calle se cierren y se apague el ruido del molino. Cuando enmudezca el canto de las aves y cesen todas las canciones. Cuando den miedo las alturas y los peligros del camino.</p>
+                        <p>Cuando florezca el almendro y se arrastre la langosta y no dé gusto la alcaparra, porque el hombre se va a su eterna morada y circulan por la calle los dolientes. Antes de que se rompa el cordón de plata, antes de que se quiebre la lámpara de oro, antes de que se haga añicos el cántaro junto a la fuente, antes de que se caiga la polea dentro del pozo, antes de que el polvo vuelva a la tierra, a lo que era, y el espíritu vuelva a Dios, que es quien lo ha dado.</p>
+                        <p>Todo las cosas, absolutamente todas, dice Cohélet, son vana ilusión.</p>
+                        <p><strong>Palabra de Dios.</strong> <em>Te alabamos, Señor.</em></p>
+                    </div>
+                </div>
+
+                <!-- Salmo -->
+                <div class="section">
+                    <h2 class="section-title">Salmo Responsorial</h2>
+                    <span class="reference">Salmo 89</span>
+                    
+                    <span class="psalm-response">Tú eres, Señor, nuestro refugio.</span>
+                    
+                    <div class="psalm-verse">
+                        Tú, Señor, haces volver al polvo a los humanos, diciendo a los mortales que retornen. Mil años son para ti como un día que ya pasó; como una breve noche.
+                    </div>
+                    <span class="psalm-response">Tú eres, Señor, nuestro refugio.</span>
+
+                    <div class="psalm-verse">
+                        Nuestra vida es tan breve como un sueño; semejante a la hierba, que despunta y florece en la mañana y por la tarde se marchita y se seca.
+                    </div>
+                    <span class="psalm-response">Tú eres, Señor, nuestro refugio.</span>
+
+                    <div class="psalm-verse">
+                        Enséñanos a ver lo que es la vida y seremos sensatos. ¿Hasta cuándo, Señor, vas a tener compasión de tus siervos? ¿Hasta cuándo?
+                    </div>
+                    <span class="psalm-response">Tú eres, Señor, nuestro refugio.</span>
+
+                    <div class="psalm-verse">
+                        Llénanos de tu amor por la mañana y júbilo será la vida toda. Que el Señor bondadoso nos ayude y dé prosperidad a nuestras obras.
+                    </div>
+                    <span class="psalm-response">Tú eres, Señor, nuestro refugio.</span>
+                </div>
+
+            </div>
+
+            <!-- COLUMNA DERECHA: EVANGELIO -->
+            <div class="column-right">
+                
+                <div class="section">
+                    <h2 class="section-title">Evangelio</h2>
+                    <span class="reference">† Lectura del santo Evangelio según san Lucas (9, 43-45)</span>
+                    
+                    <p style="text-align:center; font-weight:bold; color:#d4a373; margin-bottom: 20px; font-size: 1.2em;">Gloria a ti, Señor.</p>
+                    
+                    <div class="reading-text gospel-text">
+                        <p>En aquel tiempo, como todos comentaban, admirados, los prodigios que Jesús hacía, éste dijo a sus discípulos:</p>
+                        <p>"Presten mucha atención a lo que les voy a decir: El Hijo del hombre va a ser entregado en manos de los hombres".</p>
+                        <p>Pero ellos no entendieron estas palabras, pues un velo les ocultaba su sentido y se las volvía incomprensibles. Y tenían miedo de preguntarle acerca de este asunto.</p>
+                        <p><strong>Palabra del Señor.</strong> <em>Gloria a ti, Señor Jesús.</em></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </section>
-
-  <!-- SALMO -->
-  <section class="lectura" id="salmo">
-    <h2 class="lectura-titulo"><span class="icono">🎵</span> Salmo Responsorial</h2>
-    <p class="lectura-referencia">Salmo 89, 3-6. 12-14. 17</p>
-    <div class="lectura-texto">
-      <span class="salmo-respuesta">R. ¡Tú has sido nuestro refugio, Señor!</span>
-      
-      <div class="salmo-estrofa">
-        <p>Tú haces que los hombres vuelvan al polvo, con sólo decirles: "Vuelvan, seres humanos". Porque mil años son ante tus ojos como el día de ayer, que ya pasó, como una vigilia de la noche. <strong>R.</strong></p>
-      </div>
-      
-      <div class="salmo-estrofa">
-        <p>Tú los arrebatas, y son como un sueño, como la hierba que brota de mañana: por la mañana brota y florece, y por la tarde se seca y se marchita. <strong>R.</strong></p>
-      </div>
-      
-      <div class="salmo-estrofa">
-        <p>Enséñanos a calcular nuestros años, para que nuestro corazón alcance la sabiduría. ¡Vuélvete, Señor! ¿Hasta cuándo...? Ten compasión de tus servidores. <strong>R.</strong></p>
-      </div>
-      
-      <div class="salmo-estrofa">
-        <p>Sácianos enseguida con tu amor, y cantaremos felices toda nuestra vida. Que descienda hasta nosotros la bondad del Señor; que el Señor, nuestro Dios, haga prosperar la obra de nuestras manos. <strong>R.</strong></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EVANGELIO -->
-  <section class="lectura evangelio" id="evangelio">
-    <h2 class="lectura-titulo"><span class="icono">✨</span> Evangelio</h2>
-    <p class="lectura-referencia">Lucas 9, 43b-45</p>
-    <div class="lectura-texto">
-      <p>Mientras todos se admiraban por las cosas que hacía, Jesús dijo a sus discípulos: "Escuchen bien esto que les digo: El Hijo del hombre va a ser entregado en manos de los hombres".</p>
-      <p>Pero ellos no entendían estas palabras: su sentido les resultaba oscuro, de manera que no podían comprenderlas, y temían interrogar a Jesús acerca de esto.</p>
-      <p><strong>Palabra del Señor.</strong></p>
-    </div>
-  </section>
-
-  <div class="compartir">
-    <button class="btn-compartir" onclick="compartir()">🙏 Compartir la Palabra</button>
-  </div>
-
-</div>
-
-<footer>
-  Hecho con <span class="corazon">♥</span> para la gloria de Dios
-</footer>
-
-<script>
-  // Animar las tarjetas al cargar
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.querySelectorAll('.lectura').forEach(el => el.classList.add('visible'));
-    }, 200);
-  });
-
-  // Compartir
-  function compartir() {
-    if (navigator.share) {
-      navigator.share({
-        title: 'Lecturas del Día ✝️',
-        text: 'Comparte la Palabra de Dios 🙏',
-        url: window.location.href
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('¡Enlace copiado! Compártelo con tus hermanos 🙏');
-    }
-  }
-</script>
 
 </body>
 </html>
